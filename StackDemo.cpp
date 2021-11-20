@@ -90,14 +90,23 @@ int main(){
     
           switch(choice){
                  case 1:
+                 if(!s.isFull()){
                   int element;
                   cout<<"Enter element you want to push to the stack"<<endl;
                   cin>>element;
                   s.push(element);
+                 }else{
+                    cout<<"Can't Push. Stack is Full"<<endl;
+                 }
+                  
                   break;
                 case 2:
-                   cout<<s.pop()<<" is poped out from stack."<<endl;
-                  break;
+                if(!s.isEmpty()){
+                  cout<<s.pop()<<" is poped out from stack."<<endl;
+                 }else{
+                    cout<<"Can't Pop. Stack is Empty"<<endl;
+                 }
+                   break;
                 case 3:
                   if(s.isEmpty()){
                       cout<<"Stack is Empty"<<endl;
