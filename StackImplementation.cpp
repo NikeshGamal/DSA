@@ -1,55 +1,59 @@
 #include<iostream>
 using namespace std;
-#define size 10
-  
-  int top=-1;
-    int arr[size];
-  
-  bool isEmpty(){
-         if(top<0){
-             return true;
-         }else{
-             return false;
-         }
-    }
+#define MAX 10
 
-     bool isFull(){
-      if(top==size-1){
-            return true;
-      }else{
-            return false;
-      }
-    }
-    
-    void push(int data){
-        if(isFull()){
-             cout<<"Stack is full. Can't Push"<<endl;
-        }else{
-              top++;
-              arr[top]=data;
-        }
-    }
+int stack[MAX];
+int tos=-1;
+
+bool isEmpty(){
+  if(tos==-1){
+  	return 1;
+  }else{
+  	return 0;
+  }
+}
+
+bool isFull(){
+  if(tos==MAX-1){
+  	return 1;
+  }else{
+  	return 0;
+  }
+}
+
+void push(){
+	if(!isFull()){
+		int ele;
+		cout<<"Enter element you want to push:"<<endl;
+		cin>>ele;
+		stack[++tos]=ele;
+	}else{
+		cout<<"Can't push. Stack is full"<<endl;
+	}
+}
+
 
      int pop(){
         if(isEmpty()){
             cout<<"Stack is Empty. Can't Pop"<<endl;
-            return 0;
         }else{
-            int popData = arr[top];
-            top--;
-            return popData;
+            int popData = stack[tos];
+            tos--;
+            cout<<popData<<" is poped out from stack."<<endl;
         }  
+        return 0;
     }
 
     
 
      void showStack(){
        cout<<"Stack is: "<<endl;
-        for(int i=0;i<=top; i++){
-            cout<<arr[i]<<" ";
+        for(int i=tos;i>=0;i--){
+            cout<<stack[i]<<" ";
         }
     }
-
+    
+    
 int main(){
  
   while(1){
@@ -67,22 +71,10 @@ int main(){
     
           switch(choice){
                  case 1:
-                 if(!isFull()){
-                  int element;
-                  cout<<"Enter element you want to push to the stack"<<endl;
-                  cin>>element;
-                  push(element);
-                 }else{
-                    cout<<"Can't Push. Stack is Full"<<endl;
-                 }
-                  
+                  push();
                   break;
                 case 2:
-                if(!isEmpty()){
-                  cout<<pop()<<" is poped out from stack."<<endl;
-                 }else{
-                    cout<<"Can't Pop. Stack is Empty"<<endl;
-                 }
+                   pop();
                    break;
                 case 3:
                   if(isEmpty()){
